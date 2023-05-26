@@ -1,4 +1,7 @@
+
 class HotSauce {
+
+    static hotSauces = [];
 
     constructor(name, label, heatScore, scovilles, flavorProfile, description, pairings, imageLink) {
         this.name = name;
@@ -9,7 +12,11 @@ class HotSauce {
         this.description = description;
         this.pairings = pairings;
         this.imageLink = imageLink;
-    }
+
+        HotSauce.hotSauces.push(this);
+    };
+};
+
+export default HotSauce;
 
 
-}
