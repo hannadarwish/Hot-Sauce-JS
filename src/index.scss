@@ -6,9 +6,30 @@ body {
 header {
     display: flex;
     justify-content: space-around;
-
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    color: white;
+    font-style: bold;
+    font-family: "Rock Salt", cursive;
+    font-size: 0.75rem;
 }
 
 #hot-ones-logo {
-    width: 115px;
+    max-width: 80px;
+    height: auto;
 }
+
+.sauce-img-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+
+.sauce-img-container .hot-sauce-mini {
+    width: 50px;
+    height: auto;
+    margin: 15px;
+}
+  
+
