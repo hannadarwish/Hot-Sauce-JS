@@ -1,8 +1,9 @@
 class RadarChart {
 
-    constructor(labels, data) {
+    constructor(labels, data, name) {
         this.labels = labels;
         this.data = data;
+        this.name = name;
 
         this.chartOptions = {
             scale: {
@@ -18,6 +19,7 @@ class RadarChart {
         this.chartData = {
             labels: this.labels,
             datasets: [{
+                label: this.name,
                 data: this.data,
                 fill: true,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -29,23 +31,7 @@ class RadarChart {
             }]
         };
         
-        this.renderChart();
     };
-
-    renderChart() {
-        const canvas = document.createElement("canvas");
-        canvas.id = "radarChart";
-
-        const radarChartContainer = document.querySelector(".radar-chart-container");
-        radarChartContainer.appendChild(canvas);
-
-        const ctx = canvas.getContext("2d");
-        new Chart(ctx, {
-            type: "radar",
-            data: this.chartData,
-            options: this.chartOptions,
-        });
-    }
 
 };
 
