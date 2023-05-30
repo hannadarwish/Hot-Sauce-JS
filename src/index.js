@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         createRadarChart(hotSauce);
         showImg(hotSauce);
         populateDescription(hotSauce);
-        populatePairingsCarousel(hotSauce.pairings);
+        populatePairingsCarousel(hotSauce);
     }
 
     function createRadarChart(hotSauce) {

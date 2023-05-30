@@ -34,6 +34,7 @@ header {
     margin: 10px;
     border: 2px solid orange;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .flex-box-middle {
@@ -71,30 +72,42 @@ header {
     /* Add your styling for the description box */
 }
 
-.carousel {
+
+#pairings-carousel-container {
     position: relative;
-    height: 200px;
-    max-width: 30%;
+    height: 600px;
+    width: 80%;
     margin: 0 auto;
-    padding-top: 50px;
 }
 
-.carousel-image {
+// .carousel {
+//     position: relative;
+//     height: 200px;
+//     max-width: 30%;
+//     margin: 0 auto;
+//     padding-top: 50px;
+//     padding-bottom: 50px;
+// }
+
+.carousel__image {
     max-width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
-.carousel-track-container {
-    background-color: lightgreen;
+.carousel__track-container {
+    background: lightgreen;
+    padding: 10px;
     height: 100%;
     position: relative;
+    overflow: hidden;
 }
 
-.carousel-track {
+.carousel__track {
     padding: 0;
     margin: 0;
     list-style: none;
+    position: relative;
+    height: 100%;
+    transition: transform 250ms ease-in;
 }
 
 .carousel-slide {
@@ -109,8 +122,9 @@ header {
     top: 50%;
     transform: translateY(-50%);
     left: -40px;
-    // background: transparent;
-    // border: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
 }
 
 .carousel-button-right {
@@ -118,14 +132,15 @@ header {
     top: 50%;
     transform: translateY(-50%);
     right: -40px;
-    // background: transparent;
-    // border: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
 }
 
 .carousel-nav {
     display: flex;
     justify-content: center;
-    padding: 10px 0;
+    padding: 6px 0;
 }
 
 .carousel-indicator {
@@ -134,10 +149,19 @@ header {
     width: 15px;
     height: 15px;
     background: rgba(0,0,0, .3);
-    margin: 0 10px;
+    margin: 0 5px;
+    cursor: pointer;
 }
 
 .carousel-indicator.current-slide {
     background: rgba(0,0,0,.75)
 }
+
+// .is-hidden {
+//     display: none;
+// }
+
+// .hide-carousel {
+//     display: none;
+// }
 
