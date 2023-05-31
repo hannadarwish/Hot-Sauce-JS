@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleHotSauceClick(event) {
+        event.stopPropagation();
         const hotSauceId = event.target.id;
         const hotSauce = HotSauce.hotSauces[hotSauceId];
 

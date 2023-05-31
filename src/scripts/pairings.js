@@ -1,7 +1,7 @@
 
 export function populatePairingsCarousel(hotSauce) {
 
-    const pairingText = document.querySelector(".pairing-text");
+    const pairingText = document.querySelector("#pairings-carousel-container .pairing-text");
     const carouselContainer = document.getElementById("pairings-carousel-container");
     const track = document.querySelector(".carousel-track");
     const nextButton = document.querySelector(".carousel-button-right");
@@ -11,6 +11,7 @@ export function populatePairingsCarousel(hotSauce) {
 
     track.innerHTML = "";
 
+    //pairing text
     pairingText.textContent = `Try ${hotSauce.name} with... `;
 
     if (pairingText) {
@@ -19,45 +20,59 @@ export function populatePairingsCarousel(hotSauce) {
         pairingText.classList.add("is-hidden");
     }
 
+    console.log(hotSauce.pairings);
     hotSauce.pairings.forEach((pairing, index) => {
         const slide = document.createElement("li");
         slide.classList.add("carousel-slide");
         
         if (index === 0) {
             slide.classList.add("current-slide");
+            slide.style.left = "0px";
         }
-
+        
         slide.style.backgroundImage = `url(${pairing.image})`;
+        // debugger;
         track.appendChild(slide);
     });
 
     const slides = Array.from(track.children);
-    const slideWidth = slides[0].getBoundingClientRect().width;
+    // const slideWidth = slides[0].getBoundingClientRect().width;
 
     // arrange the slides next to one another
     const setSlidePosition = (slide, index) => {
-        slide.style.left = slideWidth * index + "px";
+        // debugger;
+        if (index === 0) {
+            slide.style.left = "0px";
+        } else if(index === 1){
+            slide.style.left = "280px";
+        } else {
+            slide.style.left = "560px";
+        }
     };
+
     slides.forEach(setSlidePosition);
 
     const moveToSlide = (track, currentSlide, targetSlide) => {
+        // debugger;
         track.style.transform = "translateX(-" + targetSlide.style.left + ")";
         currentSlide.classList.remove("current-slide");
         targetSlide.classList.add("current-slide");
-    }
-    const updateDots = (currentDot, targetDot) => {
-        currentDot.classList.remove("current-slide");
-        targetDot.classList.add("current-slide");
+        // debugger
     }
 
-    const hideShowArrows = (slides, prevButton, nextButton, targetIndex) => {
+    const updateDots = (currentDot, targetDot) => {
+        currentDot.classList.remove("current-button");
+        targetDot.classList.add("current-button");
+    }
+
+    const hideShowArrows = (prevButton, nextButton, targetIndex) => {
         if (targetIndex === 0) {
             prevButton.classList.add("is-hidden");
             nextButton.classList.remove("is-hidden");
-        } else if (targetIndex === slides.length - 1) {
+        } else if (targetIndex === 2) {
             prevButton.classList.remove("is-hidden");
             nextButton.classList.add("is-hidden");
-        } else {
+        } else if (targetIndex === 1) {
             prevButton.classList.remove("is-hidden");
             nextButton.classList.remove("is-hidden");
         }
@@ -65,51 +80,58 @@ export function populatePairingsCarousel(hotSauce) {
 
     // when I click left, move slides to left
     prevButton.addEventListener("click", e => {
-        const currentSlide = document.querySelector(".current-slide");
+        const currentSlide = track.querySelector(".current-slide");
         const prevSlide = currentSlide.previousElementSibling;
-        const currentDot = dotsNav.querySelector(".current-slide");
+        const currentDot = dotsNav.querySelector(".current-button");
         const prevDot = currentDot.previousElementSibling;
         const prevIndex = slides.findIndex(slide => slide === prevSlide);
 
         moveToSlide(track, currentSlide, prevSlide);
         updateDots(currentDot, prevDot);
-        hideShowArrows(slides, prevButton, nextButton, prevIndex);
+        hideShowArrows(prevButton, nextButton, prevIndex);
     });
 
     // when I click right, move slides to right
-    nextButton.addEventListener("click", e => {
-        const currentSlide = track.querySelector(".current-slide");
+    nextButton.addEventListener("click", (e) => {
+        const currentSlide = document.querySelector(".current-slide");
         const nextSlide = currentSlide.nextElementSibling;
-        const currentDot = dotsNav.querySelector(".current-slide");
+        const currentDot = dotsNav.querySelector(".current-button");
         const nextDot = currentDot.nextElementSibling;
         const nextIndex = slides.findIndex(slide => slide === nextSlide);
+        // debugger;
+        // console.log(track);
+        // console.log(currentSlide);
+        // console.log(nextSlide);
 
         moveToSlide(track, currentSlide, nextSlide);
         updateDots(currentDot, nextDot);
-        hideShowArrows(slides, prevButton, nextButton, nextIndex);
+        hideShowArrows(prevButton, nextButton, nextIndex);
     })
 
     // when I click the nav indicator, move to that slide
-
     dotsNav.addEventListener("click", e => {
         // what indicator was clicked on?
-        const targetDot = e.target.closest("button");
+        const targetDot = e.target;
 
         if (!targetDot) return;
-
+        // debugger
         const currentSlide = track.querySelector(".current-slide");
-        const currentDot = dotsNav.querySelector(".current-slide");
+        const currentDot = dotsNav.querySelector(".current-button");
         const targetIndex = dots.findIndex(dot => dot === targetDot);
         const targetSlide = slides[targetIndex];
 
+        console.log("current-slide", currentSlide);
+        console.log("target-slide", targetSlide);
+
         moveToSlide(track, currentSlide, targetSlide);
         updateDots(currentDot, targetDot);
-        hideShowArrows(slides, prevButton, nextButton, targetIndex);
+        hideShowArrows(prevButton, nextButton, targetIndex);
     })
+    
 
     if (hotSauce) {
-        carouselContainer.classList.remove("hide-carousel");
+        carouselContainer.classList.remove("is-hidden");
     } else {
-        carouselContainer.classList.add("hide-carousel");
+        carouselContainer.classList.add("is-hidden");
     }
 }
