@@ -2,7 +2,7 @@
 export function populatePairingsCarousel(hotSauce) {
 
     const carouselContainer = document.getElementById("pairings-carousel-container");
-    const track = document.querySelector(".carousel)__track");
+    const track = document.querySelector(".carousel-track");
     const nextButton = document.querySelector(".carousel-button-right");
     const prevButton = document.querySelector(".carousel-button-left");
     const dotsNav = document.querySelector(".carousel-nav");
@@ -13,7 +13,8 @@ export function populatePairingsCarousel(hotSauce) {
     hotSauce.pairings.forEach((pairing, index) => {
         const slide = document.createElement("li");
         slide.classList.add("carousel-slide");
-        slide.innerHTML = `<img src="${pairing.image}" alt="Pairing ${index + 1}">`;
+        // slide.innerHTML = `<img src="${pairing.image}" alt="Pairing ${index + 1}">`;
+        slide.style.backgroundImage = `url(${pairing.image})`;
         track.appendChild(slide);
     });
 
@@ -51,7 +52,7 @@ export function populatePairingsCarousel(hotSauce) {
 
     // when I click left, move slides to left
     prevButton.addEventListener("click", e => {
-        const currentSlide = track.querySelector(".current-slide");
+        const currentSlide = document.querySelector(".current-slide");
         const prevSlide = currentSlide.previousElementSibling;
         const currentDot = dotsNav.querySelector(".current-slide");
         const prevDot = currentDot.previousElementSibling;
@@ -93,8 +94,6 @@ export function populatePairingsCarousel(hotSauce) {
         hideShowArrows(slides, prevButton, nextButton, targetIndex);
 
         if (hotSauce) {
-            console.log(hotSauce);
-            console.log("hello");
             carouselContainer.classList.remove("hide-carousel");
         } else {
             carouselContainer.classList.add("hide-carousel");
