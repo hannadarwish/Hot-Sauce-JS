@@ -1,7 +1,7 @@
 import { createSeeds } from "./scripts/seed.js";
 import HotSauce from "./scripts/hotsauce.js";
 import RadarChart from "./scripts/radarchart.js";
-import { populatePairingsCarousel } from "./scripts/pairings.js";
+// import { populatePairingsCarousel } from "./scripts/pairings.js";
 
 window.HotSauce = HotSauce;
 let currentChart = null; // track the current chart
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const hotSauceId = event.target.id;
         const hotSauce = HotSauce.hotSauces[hotSauceId];
 
+        // addGlow(hotSauce);
         createRadarChart(hotSauce);
         showImg(hotSauce);
         populateDescription(hotSauce);

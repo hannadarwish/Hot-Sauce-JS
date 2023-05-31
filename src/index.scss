@@ -35,10 +35,10 @@ header {
     width: 70px;
     height: auto;
     margin: 10px;
-    border: 2px solid rgb(255, 200, 0);
-    border-radius: 10px;
+    // border: 2px solid rgb(255, 200, 0);
+    // box-shadow: 0 0 30px 1px rgb(255, 170, 0);
+    // border-radius: 10px;
     cursor: pointer;
-    box-shadow: 0 0 30px 1px rgb(255, 170, 0);
 }
 
 .flex-box-middle {
@@ -171,3 +171,18 @@ header {
     display: none;
 }
 
+.glow {
+    box-shadow: 0 0 30px 1px rgb(255, 170, 0);
+    border: 2px solid rgb(255, 200, 0);
+    border-radius: 10px;
+}
+
+.sauce-img-container img:hover {
+    box-shadow: 0 0 30px 5px rgb(247, 231, 7);
+    border-radius: 10px;
+    transform: scale(1.2, 1.2);
+}
+
+.profile-links {
+transform: scale(3, 3);
+}
