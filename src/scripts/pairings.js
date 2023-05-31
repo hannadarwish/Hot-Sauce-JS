@@ -1,6 +1,7 @@
 
 export function populatePairingsCarousel(hotSauce) {
 
+    const pairingText = document.querySelector(".pairing-text");
     const carouselContainer = document.getElementById("pairings-carousel-container");
     const track = document.querySelector(".carousel-track");
     const nextButton = document.querySelector(".carousel-button-right");
@@ -9,6 +10,14 @@ export function populatePairingsCarousel(hotSauce) {
     const dots = Array.from(dotsNav.children);
 
     track.innerHTML = "";
+
+    pairingText.textContent = `Try ${hotSauce.name} with... `;
+
+    if (pairingText) {
+        pairingText.classList.remove("is-hidden");
+    } else {
+        pairingText.classList.add("is-hidden");
+    }
 
     hotSauce.pairings.forEach((pairing, index) => {
         const slide = document.createElement("li");

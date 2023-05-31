@@ -7,11 +7,15 @@ class RadarChart {
 
         this.chartOptions = {
             scale: {
+                pointLabels: {
+                    fontColor: 'black'
+                },
                 ticks: {
                     beginAtZero: true,
                     min: 0,
                     max: 10,
-                    stepSize: 2
+                    stepSize: 3,
+                    fontColor: 'black'
                 }
             }
         };
@@ -22,9 +26,9 @@ class RadarChart {
                 label: this.name,
                 data: this.data,
                 fill: true,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgb(54, 162, 235)',
-                pointBackgroundColor: 'rgb(54, 162, 235)',
+                backgroundColor: 'rgba(255, 99, 71, 0.3)',
+                borderColor: 'rgb(242, 88, 11)',
+                pointBackgroundColor: 'rgb(242, 88, 11)',
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgb(54, 162, 235)'
