@@ -64,6 +64,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function populateDescription(hotSauce) {
         const descriptionBox = document.querySelector(".description-box");
         descriptionBox.textContent = hotSauce.description;
+
+        if (hotSauce) {
+            descriptionBox.classList.remove("is-hidden");
+        } else {
+            descriptionBox.classList.add("is-hidden");
+        }
     }
 
     function showImg(hotSauce) {

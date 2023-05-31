@@ -34,17 +34,20 @@ header {
   width: 70px;
   height: auto;
   margin: 10px;
-  border: 2px solid orange;
+  border: 2px solid rgb(255, 200, 0);
   border-radius: 10px;
   cursor: pointer;
+  box-shadow: 0 0 30px 1px rgb(255, 170, 0);
 }
 
 .flex-box-middle {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-height: 400px;
-  padding-top: 100px;
+  max-height: 500px;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .radar-chart-container,
@@ -52,6 +55,11 @@ header {
 .description-box {
   flex: 1;
   max-height: 100%;
+}
+
+.radar-chart-container {
+  max-width: 100%;
+  height: auto;
 }
 
 .main-sauce-img-container {
@@ -67,27 +75,20 @@ header {
 }
 
 .description-box {
-  /* Add your styling for the description box */
-}
-
-#pairings-carousel-container {
-  position: relative;
-  height: 600px;
-  width: 80%;
-  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  background-color: rgba(255, 255, 255, 0.185);
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 0 30px 3px rgb(251, 255, 0);
 }
 
 .carousel {
+  padding-top: 50px;
+  padding-bottom: 50px;
   position: relative;
-  height: 300px;
-  width: 700px;
+  height: 250px;
+  width: 400px;
   margin: 0 auto;
-}
-
-.carousel-img {
-  max-width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .carousel-track-container {
@@ -95,6 +96,7 @@ header {
   height: 100%;
   position: relative;
   overflow: hidden;
+  border-radius: 25px;
 }
 
 .carousel-track {
@@ -110,7 +112,7 @@ header {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 700px;
+  width: 400px;
   background-size: cover;
 }
 
@@ -118,8 +120,8 @@ header {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: transparent;
-  border: 0;
+  background-color: rgba(255, 255, 255, 0.291);
+  border-radius: 5px;
   left: -40px;
 }
 
@@ -127,8 +129,8 @@ header {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: transparent;
-  border: 0;
+  background-color: rgba(255, 255, 255, 0.291);
+  border-radius: 5px;
   right: -40px;
 }
 
@@ -150,4 +152,12 @@ header {
 
 .carousel-indicator.current-slide {
   background: rgba(0, 0, 0, 0.75);
+}
+
+.is-hidden {
+  display: none;
+}
+
+.hide-carousel {
+  display: none;
 }

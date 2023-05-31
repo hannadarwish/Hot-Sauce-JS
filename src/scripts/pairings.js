@@ -13,7 +13,11 @@ export function populatePairingsCarousel(hotSauce) {
     hotSauce.pairings.forEach((pairing, index) => {
         const slide = document.createElement("li");
         slide.classList.add("carousel-slide");
-        // slide.innerHTML = `<img src="${pairing.image}" alt="Pairing ${index + 1}">`;
+        
+        if (index === 0) {
+            slide.classList.add("current-slide");
+        }
+
         slide.style.backgroundImage = `url(${pairing.image})`;
         track.appendChild(slide);
     });
@@ -92,12 +96,11 @@ export function populatePairingsCarousel(hotSauce) {
         moveToSlide(track, currentSlide, targetSlide);
         updateDots(currentDot, targetDot);
         hideShowArrows(slides, prevButton, nextButton, targetIndex);
-
-        if (hotSauce) {
-            carouselContainer.classList.remove("hide-carousel");
-        } else {
-            carouselContainer.classList.add("hide-carousel");
-        }
     })
 
+    if (hotSauce) {
+        carouselContainer.classList.remove("hide-carousel");
+    } else {
+        carouselContainer.classList.add("hide-carousel");
+    }
 }
