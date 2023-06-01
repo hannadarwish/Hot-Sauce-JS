@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showImg(hotSauce);
         populateDescription(hotSauce);
         // populatePairingsCarousel(hotSauce);
+        populatePairingsInfo(hotSauce);
     }
 
     function createRadarChart(hotSauce) {
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const radarChartContainer = document.querySelector(".radar-chart-container");
         const canvas = document.createElement("canvas");
         canvas.id = "radarChart";
+        canvas.style.color = "black";
         
         radarChartContainer.innerHTML = ""; //clears the container before adding new chart
         radarChartContainer.appendChild(canvas);
@@ -59,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
         new Chart(ctx, {
             type: "radar",
             data: radarChart.chartData,
-            options: radarChart.chartOptions,
+            options: radarChart.chartOptions
         });
 
         currentChart = radarChart;
@@ -86,6 +88,18 @@ document.addEventListener("DOMContentLoaded", () => {
         mainImgBox.innerHTML = "";
 
         mainImgBox.appendChild(imgElement);
+    }
+
+    function populatePairingsInfo(hotSauce) {
+        const pairingText = document.querySelector(".pairing-info");
+        pairingText.textContent = `Try ${hotSauce.name} with...`;
+    
+        hotSauce.pairings.forEach((pairing) => {
+            const pairingImg = document.createElement("li");
+            pairingImg.classList.add("pairing-img");
+            pairingImg.style.backgroundImage = `url(${pairing.image})`;
+            pairingText.appendChild(pairingImg);
+        });
     }
 
 });
