@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             imgElement.alt = hotSauce.name;
             imgElement.classList.add("hot-sauce-mini");
             imgElement.id = i;
+            imgElement.setAttribute("data-sauce-name", hotSauce.name);
             imgContainer.appendChild(imgElement);
         })
 
@@ -97,6 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
         hotSauce.pairings.forEach((pairing) => {
             const pairingImg = document.createElement("li");
             pairingImg.classList.add("pairing-img");
+            pairingImg.setAttribute("data-pairing-name", pairing.name);
             pairingImg.style.backgroundImage = `url(${pairing.image})`;
             pairingText.appendChild(pairingImg);
         });
