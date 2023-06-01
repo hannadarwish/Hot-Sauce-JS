@@ -2,6 +2,7 @@ import { createSeeds } from "./scripts/seed.js";
 import HotSauce from "./scripts/hotsauce.js";
 import RadarChart from "./scripts/radarchart.js";
 // import { populatePairingsCarousel } from "./scripts/pairings.js";
+import { populateBarChart } from "./scripts/barchart.js";
 
 window.HotSauce = HotSauce;
 let currentChart = null; // track the current chart
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createSeeds();
     generateSauceImages();
+    populateBarChart();
 
     function generateSauceImages() {
         const imgContainer = document.querySelector(".sauce-img-container");
@@ -36,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         createRadarChart(hotSauce);
         showImg(hotSauce);
         populateDescription(hotSauce);
-        populatePairingsCarousel(hotSauce);
+        // populatePairingsCarousel(hotSauce);
     }
 
     function createRadarChart(hotSauce) {
