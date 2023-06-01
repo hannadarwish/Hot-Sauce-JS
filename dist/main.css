@@ -258,6 +258,7 @@ header {
   height: 100px;
   object-fit: cover;
   margin-top: 10px;
+  border: solid white 1px;
   border-radius: 20px;
   background-size: cover;
   background-position: center;
